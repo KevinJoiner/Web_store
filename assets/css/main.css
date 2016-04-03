@@ -1,0 +1,16 @@
+@import url(bootstrap.css);
+
+#home_page{
+    background-color: #e5e5e5;
+    height: 1000px;
+}
+
+.banner {
+    height: 200px;
+    background-color: #31708f;
+}
+
+.nav li a {
+    color:black;
+
+}
