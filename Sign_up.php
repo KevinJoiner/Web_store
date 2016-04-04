@@ -6,19 +6,13 @@
 
 	<tr>
         <td>Name</td>
-        <td align="center"><input type="text" name="username" size="30" /></td>
+        <td align="center"><input type="text" name="name" size="30" /></td>
 	</tr>
 
     <tr>
         <td>Password</td>
-        <td align="center"><input type="text" name="username" size="30" /></td>
-
-
-    <tr>
-        <td>Name</td>
-        <td align="center"><input type="text" name="username" size="30" /></td>
-    </tr>
-
+        <td align="center"><input type="password" name="password" size="30" /></td>
+    
 
 	<tr>
         <td>Address</td>
@@ -31,7 +25,7 @@
     </tr>
 
     <tr>
-    <td colspan="2" align="center"><input type="submit" value="Submit"/></td>
+    <td colspan="2" align="center"><input type="submit" name="submit" value="Send"/></td>
     </tr>
 
 </table>
