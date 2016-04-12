@@ -15,6 +15,7 @@ if(isset($_POST['submit'])) {
         $data_missing[] = 'name';}
     elseif (ctype_alpha(trim($_POST['name']))){
         $f_name = trim($_POST['name']);
+
         }
     else{ echo "Invalid Name";}
 
@@ -39,5 +40,13 @@ if(isset($_POST['submit'])) {
         $f_cityaddress = trim($_POST['cityaddress']);
     }
     else{ echo "Invalid City";}
+
+    if(empty($data_missing)){
+        require_once('../sqlconnector.php');
+        $query = "Insert INTO customers (email,Name, password, streetadress, cityaddress) VALUES (?,?,?,?,?)";
+        $stmt = mysqli_prepare($dbc,$query);
+
+        mysqli_stmt_bind_param($stmt,"issss",$f_name,$f_password,$f_streetaddress,$f_cityaddress);
+    }
 
 }

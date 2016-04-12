@@ -9,8 +9,8 @@
 
      <ul class="nav">
          <li class="active"><a href="#">Home</a></li>
-         <li><a href="#">Product</a></li>
-         <li><a href="#</a></li>
+         <li><a href="product.php">Product</a></li>
+         <li><a href="#"</a></li>
          <li><a href="#">Menu 3</a></li>
      </ul>
 
