@@ -7,6 +7,5 @@
  */
 
 function login($idCustomer,$password){
-if()
 
 }

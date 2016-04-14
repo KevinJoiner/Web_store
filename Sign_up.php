@@ -1,6 +1,6 @@
 <html>
 <body>
-<form action="register.php" method="post">
+<form action="Processes/register.php" method="post">
 
 <table border="0">
 
@@ -12,8 +12,12 @@
     <tr>
         <td>Password</td>
         <td align="center"><input type="password" name="password" size="30" /></td>
+    <tr>
+        <td>Email</td>
+        <td align = "center"><input type="email" name="email" size="30" </td>
+        
+    </tr>
     
-
 	<tr>
         <td>Address</td>
         <td align="center"><input type="text" name="streetaddress" size="30" /></td>

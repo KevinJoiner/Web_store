@@ -19,6 +19,7 @@
  </head>
 
 <body>
+<a class=" btn" href="Sign_in.php">Sign in here </a>
 <p> Not a member yet sign up</p>
 <a  class="btn btn-primary" href="Sign_up.php">Sign Up!</a>
 
@@ -30,17 +31,7 @@
 
 
 
-<?php
-/**
- * Created by PhpStorm.
- * User: Kevin
- * Date: 4/1/2016
- * Time: 1:17 PM
- */
 
-echo "Hello World";
-
-?>
 </div>
 </html>
 

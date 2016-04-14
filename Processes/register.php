@@ -13,46 +13,61 @@ if(isset($_POST['submit'])) {
 
     if (empty($_POST['name'])) {
         $data_missing[] = 'name';}
-    elseif (ctype_alpha(trim($_POST['name']))){
+    else{
         $f_name = $_POST['name'];
 
         }
-    else{ echo "Invalid Name";}
+
 
     if (empty($_POST['email'])) {
         $data_missing[] = 'email';}
-    elseif (ctype_alnum($_POST['email'])){
-        $f_password = $_POST['email'];
+    else{
+        $f_email = $_POST['email'];
     }
-    else{ echo "Invalid password";}
+
 
     if (empty($_POST['password'])) {
         $data_missing[] = 'password';}
-    elseif (ctype_alnum($_POST['password'])){
+    else{
         $f_password = $_POST['password'];
     }
-    else{ echo "Invalid password";}
+
 
     if (empty($_POST['streetaddress'])) {
         $data_missing[] = 'streetaddress';}
-    elseif (ctype_alnum(trim($_POST['streetaddress']))){
+    else{
         $f_streetaddress = $_POST['streetaddress'];
     }
-    else{ echo "Invalid Address";}
+
 
     if (empty($_POST['cityaddress'])) {
         $data_missing[] = 'cityaddress';}
-    elseif (ctype_alpha($_POST['cityaddress'])){
+    else{
         $f_cityaddress = $_POST['cityaddress'];
     }
-    else{ echo "Invalid City";}
+
 
     if(empty($data_missing)){
-        require_once('../sqlconnector.php');
-        $query = "Insert INTO customers (email,Name, password, streetadress, cityaddress) VALUES (?,?,?,?,?)";
+        require_once('../../sql_connector.php');
+        $query = "Insert INTO customer (Name,password,streetaddress,cityaddress,email) VALUES (?,?,?,?,?)";
         $stmt = mysqli_prepare($dbc,$query);
 
-        mysqli_stmt_bind_param($stmt,"sissss",$f_name,$f_password,$f_streetaddress,$f_cityaddress);
+        mysqli_stmt_bind_param($stmt,"sssss",$f_name,$f_password,$f_streetaddress,$f_cityaddress,$f_email);
+        mysqli_stmt_execute($stmt);
+        $affected_rows = mysqli_stmt_affected_rows($stmt);
+
+        if($affected_rows == 1){
+            echo 'You are all signed up';
+        }
+        else{
+            echo 'You must have entered something wrong go back and try again';
+            echo "Don't forget that you can only use and email address once";
+        }
+
+	            mysqli_stmt_close($stmt);
+
+            mysqli_close($dbc);
+
     }
 
 }
