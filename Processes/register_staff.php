@@ -33,32 +33,26 @@ if(isset($_POST['submit'])) {
     }
 
 
-    if (empty($_POST['streetaddress'])) {
-        $data_missing[] = 'streetaddress';}
+    if (empty($_POST['is_manager'])) {
+        $f_manager = FALSE;}
     else{
-        $f_streetaddress = $mysqli->real_escape_string($_POST['streetaddress']);
+        $f_manager = TRUE;
     }
 
-
-    if (empty($_POST['cityaddress'])) {
-        $data_missing[] = 'cityaddress';}
-    else{
-        $f_cityaddress = $mysqli->real_escape_string($_POST['cityaddress']);
-    }
 
 
     if(empty($data_missing)){
-        $query = "Insert INTO customer (Name,password,streetaddress,cityaddress,email) VALUES (?,?,?,?,?)";
+        $query = "Insert INTO staff (Name,password,manager,email) VALUES (?,?,?,?)";
         $stmt = $mysqli->prepare($query);
 
-        $stmt->bind_param("sssss",$f_name,$f_password,$f_streetaddress,$f_cityaddress,$f_email);
+        $stmt->bind_param("ssis",$f_name,$f_password,$f_manager,$f_email);
 		$stmt->execute();
-        //$affected_rows = $mysqli->rowCount();
+        
 
         if($mysqli->affected_rows == 1){
-            echo 'Student Entered';
+            echo 'Employee Entered';
         }
-		echo $mysqli->affected_rows;
+		
 
 	         $stmt->close();
 

@@ -1,3 +1,4 @@
+<?php include 'config/header.php'; ?>
 <?php
 require_once('../sqlconnector.php');
 

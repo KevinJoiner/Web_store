@@ -12,5 +12,5 @@
 
 .nav li a {
     color:black;
-
+	display: inline;
 }

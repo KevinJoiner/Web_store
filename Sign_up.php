@@ -1,3 +1,4 @@
+<?php include 'config/header.php'; ?>
 <html>
 <body>
 <form action="Processes/register.php" method="post">
@@ -12,7 +13,9 @@
     <tr>
         <td>Password</td>
         <td align="center"><input type="password" name="password" size="30" /></td>
-    <tr>
+    </tr>
+	
+	<tr>
         <td>Email</td>
         <td align = "center"><input type="email" name="email" size="30" </td>
         

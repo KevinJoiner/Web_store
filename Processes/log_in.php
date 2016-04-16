@@ -1,33 +1,60 @@
+<?php include 'config/header.php'; ?>
 <?php
+require_once('../../sql_connector.php');
 if(isset($_POST['submit'])) {
-    $f_email = $_POST['email'];
-    $f_password = $_POST['password'];
+    $f_email = $mysqli->real_escape_string($_POST['email']);
+    $f_password = $mysqli->real_escape_string($_POST['password']);
     if(isset($_POST['is_employee'])){
         $f_staff = $_POST['is_employee'];}
-    else $f_staff = 'no' ;
+    else $f_staff = False ;
 
-    require_once('../../sql_connector.php');
+    
     if ($f_staff == 'Yes') {
-        $qry = "SELECT * FROM staff WHERE email = $f_email  AND password = $f_password LIMIT 1";
-        $res=mysqli_query($dbc,$qry);
-        if (mysqli_num_rows($res)==1){
-            echo 'Logged in';
-        }
+        $stmt = $mysqli->prepare('SELECT Name,idStaff, manager FROM staff WHERE email = ? AND password = ? LIMIT 1');
+        $stmt->bind_param("ss",$f_email,$f_password);
+		$stmt->bind_result($Name,$SID,$is_manager);
+        $stmt->execute();
+        $results = $stmt->fetch();
+        if ($results ==1){
+            echo 'Logged in as employee';
+			session_start();
+			$_SESSION['user'] = $SID;
+			$_SESSION['name'] = $Name;
+			if($is_manager){
+				$_SESSION['priv']='2';
+			}
+			else $_SESSION['priv'] = '1';
+			
+			
+		}
+		else{
+			echo "Invalid Log in Please go back and try again";
+		}
 
 
     }
 
     else  {
 
-        $stmt = mysqli_prepare($dbc,'SELECT * FROM customer WHERE email = ? AND password = ? LIMIT 1');
-        mysqli_stmt_bind_param($stmt,"ss",$f_email,$f_password);
-        mysqli_stmt_execute($stmt);
-        $results = mysqli_store_result($dbc);
-        $info = mysqli_stmt_fetch($stmt);
-        if (mysqli_num_rows($results)==1){
+        $stmt = $mysqli->prepare('SELECT idCustomer FROM customer WHERE email = ? AND password = ? LIMIT 1');
+        $stmt->bind_param("ss",$f_email,$f_password);
+		$stmt->bind_result($CID);
+        $stmt->execute();
+        $results = $stmt->fetch();
+        if ($results ==1){
             echo 'Logged in as customer';
-        }
+			session_start();
+			$_SESSION['priv'] = '0';
+			$_SESSION['user'] = $CID;
+			
+		}
+		else{
+			echo "Invalid Log in Please go back and try again";
+		}
 
 
     }
+	$stmt->close();
+
+    $mysqli->close();
 }

@@ -1,5 +1,6 @@
+<?php include 'config/header.php'; ?>
+
 <html>
-<link rel="stylesheet" type="text/css" href="assets\css\main.css">
 <div id="home_page">
  <head>
      <div class =banner>
@@ -9,11 +10,11 @@
 
      <ul class="nav">
          <li class="active"><a href="#">Home</a></li>
-         <li><a href="product.php">Product</a></li>
-         <li><a href="#"</a></li>
+         <li><a href="products.php">Product</a></li>
+         <li><a href="staff.php">Staff</a></li>
          <li><a href="#">Menu 3</a></li>
      </ul>
-
+	 
      </div>
      
  </head>
