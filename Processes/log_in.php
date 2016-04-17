@@ -12,13 +12,13 @@ if(isset($_POST['submit'])) {
     if ($f_staff == 'Yes') {
         $stmt = $mysqli->prepare('SELECT Name,idStaff, manager FROM staff WHERE email = ? AND password = ? LIMIT 1');
         $stmt->bind_param("ss",$f_email,$f_password);
-		$stmt->bind_result($Name,$SID,$is_manager);
+		$stmt->bind_result($Name,$CID,$is_manager);
         $stmt->execute();
         $results = $stmt->fetch();
         if ($results ==1){
             echo 'Logged in as employee';
 			session_start();
-			$_SESSION['user'] = $SID;
+			$_SESSION['user'] = $CID;
 			$_SESSION['name'] = $Name;
 			if($is_manager){
 				$_SESSION['priv']='2';

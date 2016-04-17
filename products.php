@@ -46,7 +46,7 @@
 
 require_once('../sql_connector.php');
 
-if (isset($_POST['submit'])){
+if (isset($_POST['submit']) ){//and (!empty($_POST['name']) or !empty($_POST['max']) or !empty($_POST['min']))){
     $data_missing = array();
     
 	if (empty($_POST['name'])) {
@@ -84,6 +84,10 @@ if (isset($_POST['submit'])){
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param("sdd",$f_name,$f_min,$f_max);
 	}
+	elseif(count($data_missing) == 3 ){
+		$query = "SELECT * FROM product ORDER BY ". $f_sort;
+		$stmt = $mysqli->prepare($query);
+	}
 	elseif($data_missing[0] == 'max'){
 		$query = "SELECT * FROM product WHERE Name LIKE ? and Price >=? ORDER BY ". $f_sort;
 		$stmt = $mysqli->prepare($query);
@@ -109,6 +113,7 @@ if (isset($_POST['submit'])){
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param("d",$f_max);
 	}
+
 	else{
 		$query = "SELECT * FROM product WHERE Price >=? ORDER BY ". $f_sort;
 		$stmt = $mysqli->prepare($query);
@@ -122,7 +127,8 @@ if (isset($_POST['submit'])){
 		 '<tr> <td>'. $PID.'</td> 
 		 <td>'. $Name.'</td>
 		 <td>$'. $Price.'</td>
-		 <td>'. "Add to Cart".'</td>   </tr>';
+		 <td><form action="add_cart.php" method="post"> 
+		<button class = "btn btn-primary" type="submit" name ="PID" value="'.$PID.'">Add to cart</button></td>   </tr>';
 	}
 	$mysqli->close();
 	$stmt->close();
@@ -137,7 +143,8 @@ else{
 		 '<tr> <td>'. $row['idproduct'].'</td> 
 		 <td>'. $row['Name'].'</td>
 		 <td>$'. $row['Price'].'</td>
-		 <td>'. "Add to Cart".'</td>   </tr>';
+		 <td> <form action="add_cart.php" method="post"> 
+		<button class = "btn btn-primary" type="submit" name ="PID" value="'.$row['idproduct'].'">Add to cart</button></td>   </tr>';
 	}
 	$mysqli->close();
 }	
