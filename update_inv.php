@@ -8,7 +8,7 @@ header('location:index.php');
 
 <html>
 <body>
-<form action="Processes/register_staff.php" method="post">
+<form action="Processes/update.php" method="post">
 
 <table border="0">
 
@@ -23,19 +23,15 @@ header('location:index.php');
 	</tr>
     <tr>
         <td>Price
-        <td align = "center"><input type="text" name="email" size="30" </td>
+        <td align = "center"><input type="number" step= "0.01" name="price" size="30"/> </td>
         
     </tr>
-	
 	<tr>
-	    <td>Update
-    <input type="radio" name="is_manager" value="update"/></td>
-		<td>Add
-    <input type="radio" name="is_manager" value="add"/></td>
-	</tr>
-   
-
-    <tr>
+        <td>Quantity
+        <td align = "center"><input type="text" name="quant" size="30" </td>
+        
+    </tr>
+	<tr>
         <td colspan="2" align="center"><input type="submit" name="submit" value="Send"/></td>
     </tr>
 

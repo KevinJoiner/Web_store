@@ -14,3 +14,10 @@
     color:black;
 	display: inline;
 }
+#inventory form{
+	display: inline;
+}
+
+#product h4{
+	display: inline;
+}
