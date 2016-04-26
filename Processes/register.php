@@ -53,12 +53,11 @@ if(isset($_POST['submit'])) {
 
         $stmt->bind_param("sssss",$f_name,$f_password,$f_streetaddress,$f_cityaddress,$f_email);
 		$stmt->execute();
-        //$affected_rows = $mysqli->rowCount();
+        
 
         if($mysqli->affected_rows == 1){
-            echo 'Student Entered';
+            header('location:../index.php');
         }
-		echo $mysqli->affected_rows;
 
 	         $stmt->close();
 

@@ -16,6 +16,11 @@ if(isset($_POST['submit'])) {
 		else{
 			$f_price = $mysqli->real_escape_string($_POST['price']);
 		}
+		if (($_POST['promo']) == '') {
+			$data_missing[] = 'promo';}
+		else{
+			$f_promo = $mysqli->real_escape_string($_POST['promo']/100);
+		}
 		if (empty($_POST['name'])) {
 			$data_missing[] = 'name';}
 		else{
@@ -26,9 +31,9 @@ if(isset($_POST['submit'])) {
 	
 
 if(empty($data_missing)){
-        $query = "Insert INTO product (Name,Quantity,Price) VALUES (?,?,?)";
+        $query = "Insert INTO product (Name,Quantity,Price,promo) VALUES (?,?,?,?)";
         $stmt = $mysqli->prepare($query);
-		$stmt->bind_param("ssd",$f_name,$f_quant,$f_price);
+		$stmt->bind_param("ssdd",$f_name,$f_quant,$f_price,$f_promo);
 		$stmt->execute();
         
 

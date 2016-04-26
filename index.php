@@ -2,29 +2,23 @@
 
 <html>
 <div id="home_page">
- <head>
-     <div class =banner>
+ <body>
+     <div>
          <h2>Hello Welcome to the shop have a look around</h2>
-
-
-
-     <ul class="nav">
-         <li class="active"><a href="#">Home</a></li>
-         <li><a href="products.php">Product</a></li>
-         <li><a href="staff.php">Staff</a></li>
-         <li><a href="#">Menu 3</a></li>
-     </ul>
-	 
-     </div>
-     
- </head>
-
-<body>
-<a class=" btn" href="Sign_in.php">Sign in here </a>
-<p> Not a member yet sign up</p>
-<a  class="btn btn-primary" href="Sign_up.php">Sign Up!</a>
-
-
+		 <br>
+		 <br>
+		 <h5>Do you like toys or board games well if so this is your one stop shop.<br>
+				We try to offer a very whelming experince.<br>
+				Sure there are no cool pictures or spinning doo-dads,<br>
+				But what we have is more than all of that...<br>
+				WE HAVE <form action="#rick_rolled" method="post"> 
+		<button class = "btn btn-primary" type="submit" name ="add" value="add"><h1>THIS</h1></button>
+		</h5> 
+		 <?php
+		 if(isset($_POST['add'])){
+			echo' <iframe width="840" height="630" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+		 }
+		 ?>
 
 
 

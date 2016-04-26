@@ -3,6 +3,7 @@
 #home_page{
     background-color: #e5e5e5;
     height: 1000px;
+	text-align: center;
 }
 
 .banner {
@@ -20,4 +21,37 @@
 
 #product h4{
 	display: inline;
+}
+table{
+	width: 90%;
+    left: 5%;
+	right: 5%;
+    position: relative;
+}
+
+#product .panel{
+	background-color: #F8F8F8;
+	padding:10px;
+}
+
+
+#heading .navbar-right a {
+	padding:0px;
+	padding-right: 2em;
+}
+
+#cart input{
+	    float: none;
+		padding:0px;
+}
+
+.sale{
+	color: red;
+	display: inline-block;
+}
+
+.old_price{
+	text-decoration: line-through;
+	display: inline-block;
+	padding-right:2px;
 }

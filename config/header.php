@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="assets\css\main.css">
 <html>
 <head>
+<div id ="heading">
      <nav class="navbar navbar-default navbar-static-top">
 
 
@@ -16,7 +17,7 @@
 <?php
 session_start();
 if(isset($_SESSION['priv'])){
-    echo " <li> Hello ". $_SESSION['name']."</li> ";
+    echo " <li> Hello ". $_SESSION['name']."</li> <br>";
     if($_SESSION['priv'] == '0'){
         echo '<li> <a href = "cart.php"> View Cart </a></li> ';
     }
@@ -24,22 +25,24 @@ if(isset($_SESSION['priv'])){
 		echo '<li> <a href ="staff.php"> Staff Page </a></li>';
 		
 	}
+	echo '<br> <li> <a href = "Processes/log_out.php"> Log out </a></li> ';
 }
 
 else{
 	echo '<li> <a href = "Sign_in.php"> Sign in </a></li> ';
+	echo '<br> <li> <a href = "Sign_up.php"> Sign up </a></li>';
 	
 	
 }
 
 ?>
-                
+               
             </ul>
         </div><!--/.nav-collapse -->
     </nav>
 
 
-
+</div>
 </head>
 
 

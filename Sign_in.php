@@ -1,8 +1,4 @@
 <?php include 'config/header.php'; ?>
-<?php
- session_start();
-?>
-
 <html>
 <body>
 <form action="Processes/log_in.php" method="post">

@@ -28,6 +28,7 @@
 	</form>
 </div>	
 
+
 <table class="table tabel-striped>">
 <thead>
     <tr>
@@ -120,14 +121,20 @@ if (isset($_POST['submit']) ){//and (!empty($_POST['name']) or !empty($_POST['ma
 		$stmt->bind_param("d",$f_min);
 	}
 	$stmt->execute();
-	$stmt->bind_result($PID, $Name, $Price, $Quantity);
+	$stmt->bind_result($PID, $Name, $Price, $Quantity, $promo);
 	
 	while ($stmt->fetch()) {
 		echo
 		 '<tr> <td>'. $PID.'</td> 
-		 <td>'. $Name.'</td>
-		 <td>$'. $Price.'</td>
-		 <td><form action="add_cart.php" method="post"> 
+		 <td>'. $Name.'</td>';
+		 if ($promo != 0){
+			echo '<td> <div class ="old_price">$'. $Price.'</div> <div class = "sale">'.($Price-($Price*$promo)).' </div></td>';
+		 }
+		 else {
+			 echo '<td>$'. $Price.'</td>';
+		 }
+	 
+		 echo '<td><form action="Processes/add_cart.php" method="post"> 
 		<button class = "btn btn-primary" type="submit" name ="PID" value="'.$PID.'">Add to cart</button></td>   </tr>';
 	}
 	$mysqli->close();
@@ -141,9 +148,14 @@ else{
 	while($row = $result->fetch_array(MYSQLI_ASSOC)){
 		echo
 		 '<tr> <td>'. $row['idproduct'].'</td> 
-		 <td>'. $row['Name'].'</td>
-		 <td>$'. $row['Price'].'</td>
-		 <td> <form action="add_cart.php" method="post"> 
+		 <td>'. $row['Name'].'</td>';
+		 if ($row['promo'] != 0){
+			echo '<td> <div class ="old_price">$'. $row['Price'].'</div> <div class = "sale">$'.($row['Price']-($row['Price']*$row['promo'])).' </div></td>';
+		 }
+		 else {
+			 echo '<td>$'. $row['Price'].'</td>';
+		 }
+		 echo '<td> <form action="Processes/add_cart.php" method="post"> 
 		<button class = "btn btn-primary" type="submit" name ="PID" value="'.$row['idproduct'].'">Add to cart</button></td>   </tr>';
 	}
 	$mysqli->close();

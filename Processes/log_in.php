@@ -1,4 +1,3 @@
-<?php include 'config/header.php'; ?>
 <?php
 require_once('../../sql_connector.php');
 if(isset($_POST['submit'])) {
@@ -16,7 +15,6 @@ if(isset($_POST['submit'])) {
         $stmt->execute();
         $results = $stmt->fetch();
         if ($results ==1){
-            echo 'Logged in as employee';
 			session_start();
 			$_SESSION['user'] = $CID;
 			$_SESSION['name'] = $Name;
@@ -25,7 +23,7 @@ if(isset($_POST['submit'])) {
 			}
 			else $_SESSION['priv'] = '1';
 			
-			
+			header('location:../index.php');
 		}
 		else{
 			echo "Invalid Log in Please go back and try again";
@@ -36,17 +34,17 @@ if(isset($_POST['submit'])) {
 
     else  {
 
-        $stmt = $mysqli->prepare('SELECT idCustomer FROM customer WHERE email = ? AND password = ? LIMIT 1');
+        $stmt = $mysqli->prepare('SELECT idCustomer,Name FROM customer WHERE email = ? AND password = ? LIMIT 1');
         $stmt->bind_param("ss",$f_email,$f_password);
-		$stmt->bind_result($CID);
+		$stmt->bind_result($CID,$name);
         $stmt->execute();
         $results = $stmt->fetch();
         if ($results ==1){
-            echo 'Logged in as customer';
 			session_start();
 			$_SESSION['priv'] = '0';
 			$_SESSION['user'] = $CID;
-			
+			$_SESSION['name'] = $name;
+			header('location:../index.php');
 		}
 		else{
 			echo "Invalid Log in Please go back and try again";

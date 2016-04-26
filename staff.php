@@ -12,11 +12,9 @@ header('location:index.php');
 <ul class="nav">
          <li><a href="#">Create Sales Promotion</a></li>
          <li><a href="./Sign_up_staff.php">Add a new employee</a></li>
-         <li><a href="#">Upgrade to manager</a></li>
          <li><a href="inventory.php">View Inventory</a></li>
-		 <li><a href="#">Ship pending orders</a></li>
-		 <li><a href="#">View Sales stats</a></li>
-		 <li><a href="#">View Sales Promotion</a></li>
+		 <li><a href="staff_orders.php">Ship pending orders</a></li>
+		 <li><a href="sales.php">View Sales stats</a></li>
      </ul>
 
 
