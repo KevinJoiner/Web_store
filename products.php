@@ -99,7 +99,7 @@ if (isset($_POST['submit']) ){//and (!empty($_POST['name']) or !empty($_POST['ma
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param("sd",$f_name,$f_max);
 	}
-	elseif(count($data_missing)==1 and $data_missing[0] == 'Name'){
+	elseif(count($data_missing)==1 and $data_missing[0] == 'name'){
 		$query = "SELECT * FROM product WHERE Price >=? and Price <= ? ORDER BY ". $f_sort;
 		$stmt = $mysqli->prepare($query);
 		$stmt->bind_param("dd",$f_min,$f_max);

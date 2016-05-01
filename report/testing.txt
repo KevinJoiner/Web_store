@@ -1,0 +1,11 @@
+Testing: 
+All of the features were tested for basic functionality then some were tested for specific bugs.
+
+		Log in: First when testing the login function I used invalid info to make sure that they will nnot be alowed
+					SQL injection input was tested to make sure that only valid credentials work
+			
+		Product: When testing the product search querrys I test all of the possible combinations of seraches such as min and text or max and nothing else
+					The price search compares the original price and not the promotion price.
+		
+		Updating inventory: I tested the attempt to use negative number in the inventory. or a promo percentage out of the rang 0- 99
+								Tested leaving an enrtry blank which gives and error in the query.

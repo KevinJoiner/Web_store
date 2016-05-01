@@ -1,0 +1,55 @@
+
+
+
+| staff | CREATE TABLE `staff` (
+  `idStaff` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `Password` varchar(45) NOT NULL,
+  `manager` tinyint(1) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`idStaff`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 |
+
+| customer | CREATE TABLE `customer` (
+  `idCustomer` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `password` varchar(45) NOT NULL,
+  `cityaddress` varchar(35) DEFAULT NULL,
+  `streetaddress` varchar(100) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  PRIMARY KEY (`idCustomer`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 |
+
+
+| product | CREATE TABLE `product` (
+  `idproduct` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) DEFAULT NULL,
+  `Price` decimal(15,2) DEFAULT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `promo` decimal(2,2) DEFAULT '0.00',
+  PRIMARY KEY (`idproduct`),
+  UNIQUE KEY `Name` (`Name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 |
+
+
+| cart  | CREATE TABLE `cart` (
+  `ProductID` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT '1',
+  `OID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ProductID`,`CustomerID`),
+  KEY `CustomerID_idx` (`CustomerID`),
+  KEY `OID` (`OID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 |
+
+
+| orders | CREATE TABLE `orders` (
+  `OID` int(11) NOT NULL AUTO_INCREMENT,
+  `CID` int(11) NOT NULL,
+  `Date` date DEFAULT NULL,
+  `Status` enum('in_cart','pending','shipped') DEFAULT 'in_cart',
+  PRIMARY KEY (`OID`),
+  KEY `CID` (`CID`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 |

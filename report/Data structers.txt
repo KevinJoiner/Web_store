@@ -1,0 +1,13 @@
+Data Structures
+
+Intergers: are used for all ID's and quantities
+
+Bools: are used in the staff table is_manger column 
+	true if the employee is a manger false if they are not.
+	
+Decimal: are used for Promo column in the product table and for the prices
+
+Date type: is used for the date in the order table.
+
+Enum: used in order table to show if oreder is {shipped,in_cart,pending}
+

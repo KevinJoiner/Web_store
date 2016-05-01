@@ -1,0 +1,7 @@
+Dependicies:
+
+Staff: StaffID ->name,password,is_manger,email
+Customer: CustomerID -> name, password,email,cityaddress.streetaddress
+Orders: OID->Date, status, CID
+Product: ProductID ->Name,quantity,price,promo
+Cart: OID->CID ; PID->Quantity

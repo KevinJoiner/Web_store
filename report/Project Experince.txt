@@ -1,0 +1,8 @@
+Overall experince:
+
+Overall this project was on of the most challenging of my carrer at UK but also very rewarding
+There was a bit of a learning curve when learning how to use php with mysql server
+such as making querys using the php and protecting against SQL injection.
+Many hours where put into this project and a couple all-nighters, but it is worth is now
+to be able to use the knowledge I have learned in class in a practicle way and be able
+to apply in in future projects.
